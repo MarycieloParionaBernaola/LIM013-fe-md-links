@@ -1,13 +1,16 @@
 {
-  "name": "md-links-mp",
+  "name": "md-links-mpb",
   "version": "1.0.0",
-  "description": "",
+  "description": "This CLI validate markdown files links and show their statistics",
   "main": "index.js",
+  "bin": {
+    "md-links": "src/cli.js"
+  },
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "eslint": "eslint --ext .js test/",
+    "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint",
     "test": "jest --verbose --coverage"
   },
@@ -22,7 +25,7 @@
     "javascript",
     "node.js"
   ],
-  "author": "Marycielo Pariona <mparionabernaola@gmail.com",
+  "author": "Marycielo Pariona Bernaola <mparionabernaola@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/issues"
