@@ -14,12 +14,14 @@ const validateAbsolutePath = (givenPath) => {
     // Validate absolute path
     if (path.isAbsolute(givenPath)) {
       // Use path.isAbsolute() method to determinate if given path is an absolute path
-      // It returns a boolen so if the given path is a zero-length string, false will be returned
-      // A TypeError is thrown if path is not a string.
+      // It returns a boolean so if the given path is a zero-length string, false will be returned
+      // A TypeError is thrown if path is not a string
       absolutePathValidated = givenPath;
+      console.log('Given path is absolute!');
     } else {
       // Convert to absolute path
       absolutePathValidated = path.resolve(givenPath);
+      console.log('Given path was converted to absolute!');
       // Use path.resolve() method to resolve sequence of paths/path segments into an absolute path
     }
   } else {
@@ -27,7 +29,12 @@ const validateAbsolutePath = (givenPath) => {
   }
   return absolutePathValidated;
 };
-
+console.log(validateAbsolutePath('.\\README.md'));
+// absolute path: E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links
+// Result: Given path is absolute! and (idem path)
+// relative path: .\\README.md result: Given path was converted to absolute!
+// E:\BOOTCAMP\PROJECTS\MD-LINKS\LIM013-fe-md-links\README.md
+// no path: C:\\BOOTCAMP result: there is no path and undefined
 module.exports = {
   validateAbsolutePath,
 };
