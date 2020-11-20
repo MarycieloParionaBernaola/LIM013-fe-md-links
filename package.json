@@ -12,7 +12,8 @@
   "scripts": {
     "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint",
-    "test": "jest --verbose --coverage"
+    "test": "jest --verbose --coverage",
+    "start": "node src/path.js"
   },
   "repository": {
     "type": "git",
