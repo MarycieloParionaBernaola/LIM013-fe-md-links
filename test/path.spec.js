@@ -22,9 +22,9 @@ describe('validate absolute path', () => {
     expect(typeof validateAbsolutePath).toBe('function');
   });
   test('the given path is absolute', () => {
-    expect(validateAbsolutePath(absolutePath)).toEqual(absolutePath);
+    expect(validateAbsolutePath(absolutePath)).toBe(absolutePath);
   });
   test('the given path is relative and is converted to absolute', () => {
-    expect(validateAbsolutePath(relativePath)).toEqual(relativePathConverted);
+    expect(validateAbsolutePath(relativePath)).toBe(relativePathConverted);
   });
 });
