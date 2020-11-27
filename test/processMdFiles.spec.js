@@ -1,41 +1,6 @@
 const {
-  isPath, isAbsolute, convertToAbsolutePath, isDirectory, readDirectory, isFile, isMd,
-} = require('../src/path.js');
-
-describe('validate path exists', () => {
-  test('is a function', () => {
-    expect(typeof isPath).toBe('function');
-  });
-  test('the given path exists and is valid', () => {
-    expect(isPath('.\\test\\path.spec.js')).toBe(true);
-    expect(isPath(Buffer.from('.\\test\\path.spec.js', 'utf-8'))).toBe(true);
-  });
-  test('the given path is invalid or does not exist', () => {
-    expect(isPath('C:\\BOOTCAMP')).toBe(false);
-    expect(isPath('')).toBe(false);
-  });
-});
-
-describe('validate absolute path', () => {
-  test('it is a function', () => {
-    expect(typeof isAbsolute).toBe('function');
-  });
-  test('the given path is absolute', () => {
-    expect(isAbsolute('E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\README.md')).toBe(true);
-  });
-  test('the given path is not absolute', () => {
-    expect(isAbsolute('.\\README.md')).toBe(false);
-  });
-});
-
-describe('convert to absolute path', () => {
-  test('it is a function', () => {
-    expect(typeof convertToAbsolutePath).toBe('function');
-  });
-  test('the given path is relative and is converted to absolute', () => {
-    expect(convertToAbsolutePath('.\\README.md')).toBe('E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\README.md');
-  });
-});
+  isDirectory, readDirectory, isFile, isMd,
+} = require('../src/processMdFiles.js');
 
 describe('validate directory path', () => {
   test('it is a function', () => {
@@ -55,7 +20,7 @@ describe('read directory', () => {
     expect(typeof readDirectory).toBe('function');
   });
   test('it returns a files array', () => {
-    expect(readDirectory('E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test')).toEqual(['path.spec.js']);
+    expect(readDirectory('E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test')).toEqual(['processMdFiles.spec.js', 'validatePath.spec.js']);
   });
 });
 
