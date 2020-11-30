@@ -2,9 +2,9 @@
   "name": "md-links-mpb",
   "version": "1.0.0",
   "description": "This CLI validate markdown files links and show their statistics",
-  "main": "src/mdLinks.js",
+  "main": "src/md-links.js",
   "bin": {
-    "md-links": "src/cli.js"
+    "md-links": "bin/cli.js"
   },
   "directories": {
     "test": "test"
@@ -13,7 +13,7 @@
     "eslint": "eslint --ext .js src/ test/",
     "pretest": "npm run eslint",
     "test": "jest --verbose --coverage",
-    "start": "node src/processMdFiles.js"
+    "start": "node src/md-links.js"
   },
   "repository": {
     "type": "git",
