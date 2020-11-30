@@ -10,7 +10,8 @@ if (givenPath && options === undefined) {
     .then((res) => console.log(res))
     .catch((err) => console.log(err));
 }
-console.log(mdLinks('E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test-files\\test-empty.md'));
+
 // 'E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test-files'
 // 'E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test-files\\more-test-files'
 // 'E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test-files\\test-empty.md'
+// 'E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test-files\\test-links-1.md'
