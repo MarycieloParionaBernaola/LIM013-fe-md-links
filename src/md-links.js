@@ -1,14 +1,32 @@
-const { isPathStr } = require('./md-links-list/validate-path');
-const { mdLinksList } = require('./md-links-list/md-links-list');
+const { isPathStr, validatePath } = require('./get-md-links/validate-path');
+const { getMdFiles } = require('./get-md-links/get-md-files');
+const { getAllMdLinksArr } = require('./get-md-links/get-md-links');
+const { validateLinks } = require('./validate-links');
 
 const mdLinks = (givenPath, options) => new Promise((resolve, reject) => {
-  let result = [];
-  if (isPathStr(givenPath) && options === undefined) {
-    result = mdLinksList(givenPath);
-    resolve(result);
-  } else {
-    const err = 'The given path is not a string path or does not exist';
-    reject(err);
+  const pathStr = isPathStr(givenPath);
+  if (!pathStr) {
+    reject(new Error('The given path is invalid or does not exist. Please check and enter it again.'));
+  }
+
+  const validPathStr = validatePath(givenPath);
+  const mdFile = getMdFiles(validPathStr).length > 0;
+  const mdLink = getAllMdLinksArr(validPathStr).length > 0;
+
+  if (!mdLink && mdFile) {
+    reject(new Error('No .md link found. Try another path.'));
+  }
+
+  if (!mdFile) {
+    reject(new Error('No .md file found. Try another path.'));
+  }
+
+  if (!options) {
+    resolve(getAllMdLinksArr(validPathStr));
+  } else if (options.validate) {
+    resolve(validateLinks(getAllMdLinksArr(validPathStr)));
+  } else if (!options.validate) {
+    resolve(getAllMdLinksArr(validPathStr));
   }
 });
 
