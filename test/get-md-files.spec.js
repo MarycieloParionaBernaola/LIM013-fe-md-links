@@ -1,7 +1,7 @@
 const path = require('path');
 const {
   isDirectory, readDirectory, isFile, isMd, getMdFiles,
-} = require('../src/md-links-list/md-files');
+} = require('../src/get-md-links/get-md-files');
 
 const cwd = process.cwd();
 const relativeDirectory = '.\\test-files';

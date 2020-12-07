@@ -1,7 +1,7 @@
 const path = require('path');
 const {
   isPath, isAbsolute, convertToAbsolutePath, isPathStr, validatePath,
-} = require('../src/md-links-list/validate-path.js');
+} = require('../src/get-md-links/validate-path');
 
 const cwd = process.cwd();
 const bufferPath = Buffer.from('.\\test-files\\test-links-1.md', 'utf-8');
