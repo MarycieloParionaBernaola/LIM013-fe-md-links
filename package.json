@@ -1,16 +1,16 @@
 {
   "name": "md-links-mpb",
   "version": "1.0.0",
-  "description": "This CLI validate markdown files links and show their statistics",
+  "description": "Command Line that validates markdown files links and display their statistics",
   "main": "src/md-links.js",
   "bin": {
-    "md-links": "bin/cli.js"
+    "md-links": "cli/cli.js"
   },
   "directories": {
     "test": "test"
   },
   "scripts": {
-    "eslint": "eslint --ext .js src/ test/",
+    "eslint": "eslint --ext .js src/ cli/ test/",
     "pretest": "npm run eslint",
     "test": "jest --verbose --coverage",
     "start": "node src/md-links.js"
@@ -33,7 +33,7 @@
   },
   "homepage": "https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links#readme",
   "devDependencies": {
-    "eslint": "^7.13.0",
+    "eslint": "^7.14.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-jest": "^24.1.3",
@@ -41,7 +41,8 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "commander": "^6.2.0",
+    "figlet": "^1.5.0",
+    "inquirer": "^7.3.3",
     "marked": "^1.2.5",
     "node-fetch": "^2.6.1"
   }
