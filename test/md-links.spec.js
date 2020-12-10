@@ -1,10 +1,8 @@
 const { mdLinks } = require('../src/md-links');
-const { allMdFolderArr, allMdFolderValidatedArr } = require('../test-output/test-output');
-
-const relativePathDoesNotExist = '.\\relative-path';
-const relativeFolderPath = '.\\test-files';
-const noMdLink = ('.\\test-files\\test-empty.md');
-const noMdFile = ('.\\test-files\\more-test-files');
+const {
+  relativePathDoesNotExist, absoluteEmptyMdFile, absoluteNoMdFile,
+  relativeDirectory, allMdFolderLinksArr, allMdFolderValidatedArr,
+} = require('./data');
 
 describe('md links function', () => {
   test('it is a function', () => {
@@ -18,37 +16,44 @@ describe('md links function', () => {
       });
   });
   test('it returns error if the path does not have a .md link', (done) => {
-    mdLinks(noMdLink)
+    mdLinks(absoluteEmptyMdFile)
       .catch((err) => {
         expect(err.message).toBe('No .md link found. Try another path.');
         done();
       });
   });
   test('it returns error if the path does not have a .md file', (done) => {
-    mdLinks(noMdFile)
+    mdLinks(absoluteNoMdFile)
       .catch((err) => {
         expect(err.message).toBe('No .md file found. Try another path.');
         done();
       });
   });
-  test('it returns all .md links when no option entered', (done) => {
-    mdLinks(relativeFolderPath)
+  test('it returns all .md links when no option is entered', (done) => {
+    mdLinks(relativeDirectory)
       .then((res) => {
-        expect(res).toEqual(allMdFolderArr);
-        done();
-      });
-  });
-  test('it returns all .md links validated when option { validate: true } is entered', (done) => {
-    mdLinks(relativeFolderPath, { validate: true })
-      .then((res) => {
-        expect(res).toEqual(allMdFolderValidatedArr);
+        expect(res).toEqual(allMdFolderLinksArr);
         done();
       });
   });
   test('it returns all .md links when option { validate: false } is entered', (done) => {
-    mdLinks(relativeFolderPath, { validate: false })
+    mdLinks(relativeDirectory, { validate: false })
       .then((res) => {
-        expect(res).toEqual(allMdFolderArr);
+        expect(res).toEqual(allMdFolderLinksArr);
+        done();
+      });
+  });
+  test('it returns all .md links validated when option { validate: true } is entered', (done) => {
+    mdLinks(relativeDirectory, { validate: true })
+      .then((res) => {
+        expect(res).toEqual(allMdFolderValidatedArr);
+        done();
+      });
+  }, 60000);
+  test('it returns error when option { validate: \'\' } is entered', (done) => {
+    mdLinks(relativeDirectory, { validate: '' })
+      .catch((err) => {
+        expect(err.message).toBe('Validate should have a boolean value');
         done();
       });
   });

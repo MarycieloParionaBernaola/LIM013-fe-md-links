@@ -1,21 +1,17 @@
-const path = require('path');
 const {
   isPath, isAbsolute, convertToAbsolutePath, isPathStr, validatePath,
-} = require('../src/get-md-links/validate-path');
-
-const cwd = process.cwd();
-const bufferPath = Buffer.from('.\\test-files\\test-links-1.md', 'utf-8');
-const relativePath = '.\\test-files\\test-links-1.md';
-const absolutePath = path.join(cwd, relativePath);
-const absolutePathDoesNottExist = 'C:\\absolute-path';
-const relativePathDoesNotExist = '.\\relative-path';
+} = require('../../src/get-md-links/validate-path');
+const {
+  bufferPath, relativeMdFile1, absoluteMdFile1, absolutePathDoesNotExist,
+  relativePathDoesNotExist,
+} = require('../data');
 
 describe('validate path exists', () => {
   test('is a function', () => {
     expect(typeof isPath).toBe('function');
   });
   test('the given path exists and is valid', () => {
-    expect(isPath(relativePath)).toBe(true);
+    expect(isPath(relativeMdFile1)).toBe(true);
     expect(isPath(bufferPath)).toBe(true);
   });
   test('the given path is invalid or does not exist', () => {
@@ -29,11 +25,11 @@ describe('validate absolute path', () => {
     expect(typeof isAbsolute).toBe('function');
   });
   test('the given path is absolute', () => {
-    expect(isAbsolute(absolutePath)).toBe(true);
-    expect(isAbsolute(absolutePathDoesNottExist)).toBe(true);
+    expect(isAbsolute(absoluteMdFile1)).toBe(true);
+    expect(isAbsolute(absolutePathDoesNotExist)).toBe(true);
   });
   test('the given path is not absolute', () => {
-    expect(isAbsolute(relativePath)).toBe(false);
+    expect(isAbsolute(relativeMdFile1)).toBe(false);
     expect(isAbsolute(relativePathDoesNotExist)).toBe(false);
   });
 });
@@ -43,7 +39,7 @@ describe('convert to absolute path', () => {
     expect(typeof convertToAbsolutePath).toBe('function');
   });
   test('the given path is relative and is converted to absolute', () => {
-    expect(convertToAbsolutePath(relativePath)).toBe(absolutePath);
+    expect(convertToAbsolutePath(relativeMdFile1)).toBe(absoluteMdFile1);
   });
 });
 
@@ -52,8 +48,8 @@ describe('validate path exists and is a string', () => {
     expect(typeof isPathStr).toBe('function');
   });
   test('the given path exists and is a string', () => {
-    expect(isPathStr(relativePath)).toBe(true);
-    expect(isPathStr(absolutePath)).toBe(true);
+    expect(isPathStr(relativeMdFile1)).toBe(true);
+    expect(isPathStr(absoluteMdFile1)).toBe(true);
   });
   test('the given path exists but is not a string', () => {
     expect(isPathStr(bufferPath)).toBe(false);
@@ -68,9 +64,9 @@ describe('validate path', () => {
     expect(typeof validatePath).toBe('function');
   });
   test('the given path is absolute', () => {
-    expect(validatePath(absolutePath)).toBe(absolutePath);
+    expect(validatePath(absoluteMdFile1)).toBe(absoluteMdFile1);
   });
   test('the given path is relative and is converted to absolute', () => {
-    expect(validatePath(relativePath)).toBe(absolutePath);
+    expect(validatePath(relativeMdFile1)).toBe(absoluteMdFile1);
   });
 });
