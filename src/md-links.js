@@ -1,5 +1,5 @@
 const { isPathStr, validatePath } = require('./get-md-links/validate-path');
-const { getMdFiles } = require('./get-md-links/get-md-files');
+const { getAllMdFiles } = require('./get-md-links/get-md-files');
 const { getAllMdLinksArr } = require('./get-md-links/get-md-links');
 const { validateLinks } = require('./validate-links');
 
@@ -10,7 +10,7 @@ const mdLinks = (givenPath, options) => new Promise((resolve, reject) => {
   }
 
   const validPathStr = validatePath(givenPath);
-  const mdFile = getMdFiles(validPathStr).length > 0;
+  const mdFile = getAllMdFiles(validPathStr).length > 0;
   const mdLink = getAllMdLinksArr(validPathStr).length > 0;
 
   if (!mdLink && mdFile) {
@@ -23,10 +23,12 @@ const mdLinks = (givenPath, options) => new Promise((resolve, reject) => {
 
   if (!options) {
     resolve(getAllMdLinksArr(validPathStr));
-  } else if (options.validate) {
-    resolve(validateLinks(getAllMdLinksArr(validPathStr)));
-  } else if (!options.validate) {
+  } else if (options.validate === false) {
     resolve(getAllMdLinksArr(validPathStr));
+  } else if (options.validate === true) {
+    resolve(validateLinks(getAllMdLinksArr(validPathStr)));
+  } else {
+    reject(new Error('Validate should have a boolean value'));
   }
 });
 
