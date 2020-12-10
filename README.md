@@ -17,10 +17,10 @@
 ## 2. Flowchart
 
 ### **API**
-![flowchart-api-md-links](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/blob/master/img/flowchart-api-md-links.png)
+![flow-chart-api-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-api-md-links.png)
 
 ### **CLI**
-![flowchart-cli-md-links](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/blob/master/img/flowchart-cli-md-links.png)
+![flow-chart-cli-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-cli-md-links.png)
 
 
 ## 3. Implementation Board
