@@ -26,8 +26,10 @@ const validateOption = (pathStr) => {
   mdLinks(pathStr, { validate: true })
     .then((res) => {
       res.forEach((e) => {
+        const link = e.statusText === 'OK' ? chalk.underline.rgb(241, 154, 62)(e.href) : chalk.bold.rgb(255, 0, 40)(e.href);
+        const status = e.statusText === 'OK' ? chalk.rgb(255, 255, 95)(e.status) : chalk.bold.rgb(255, 0, 40)(e.status);
         const statusText = e.statusText === 'OK' ? chalk.bold.rgb(160, 233, 55)(e.statusText) : chalk.bold.rgb(255, 0, 40)(e.statusText);
-        console.log(chalk.bold.bgHex('403233').rgb(171, 237, 198)`│ Path: ${chalk.rgb(188, 163, 113)(e.path)} │ Link: ${chalk.underline.rgb(241, 154, 62)(e.href)} │ Status: ${chalk.rgb(255, 255, 95)(e.status)} ${statusText} │ Text: ${chalk.rgb(154, 135, 157)(e.text)}`);
+        console.log(chalk.bold.bgHex('403233').rgb(171, 237, 198)`│ Path: ${chalk.rgb(188, 163, 113)(e.path)} │ Link: ${link} │ Status: ${status} ${statusText} │ Text: ${chalk.rgb(154, 135, 157)(e.text)} `);
       });
     })
     .catch((err) => console.log(chalk.redBright(err.message)));
@@ -47,7 +49,7 @@ const listOption = (pathStr) => {
   mdLinks(pathStr)
     .then((res) => {
       res.forEach((e) => {
-        console.log(chalk.bold.bgHex('403233').rgb(171, 237, 198)`│ Path: ${chalk.rgb(188, 163, 113)(e.path)} │ Link: ${chalk.underline.rgb(241, 154, 62)(e.href)} │ Text: ${chalk.rgb(154, 135, 157)(e.text)}`);
+        console.log(chalk.bold.bgHex('403233').rgb(171, 237, 198)`│ Path: ${chalk.rgb(188, 163, 113)(e.path)} │ Link: ${chalk.underline.rgb(241, 154, 62)(e.href)} │ Text: ${chalk.rgb(154, 135, 157)(e.text)} `);
       });
     })
     .catch((err) => console.log(chalk.redBright(err.message)));
@@ -75,10 +77,10 @@ const withInquirer = (answerPath, answerOptions) => {
     case 'Validate':
       validateOption(answerPath);
       break;
-    case 'Stats':
+    case 'Run stats':
       statsOption(answerPath);
       break;
-    case 'Validate and stats':
+    case 'Validate and run stats':
       validateStatsOption(answerPath);
       break;
     default: // do nothing;
@@ -106,8 +108,8 @@ const options = (answerPath) => {
       {
         name: 'options',
         type: 'list',
-        message: 'What do you want to do with md links:',
-        choices: ['List', 'Validate', 'Stats', 'Validate and stats'],
+        message: 'What do you want to do with md links?:',
+        choices: ['List', 'Validate', 'Run stats', 'Validate and run stats'],
       },
     ])
     .then((answer) => withInquirer(answerPath, answer.options))
@@ -156,7 +158,7 @@ const startApp = () => {
   if (givenPath) {
     withoutInquirer(givenPath);
   } else {
-    console.log(chalk.bgHex('403233').bold.rgb(171, 237, 198)(figlet.textSync('MD-LINKS', { horizontalLayout: 'full' })));
+    console.log(chalk.bgHex('403233').bold.rgb(171, 237, 198)(figlet.textSync('MD-LINKS-VALIDATOR', { horizontalLayout: 'full' })));
     startInquirer();
   }
 };
