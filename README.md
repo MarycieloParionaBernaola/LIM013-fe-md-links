@@ -17,11 +17,13 @@
 ## 2. Flowchart
 
 ### **API**
-![flow-chart-api-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-api-md-links.png)
+<p align="center">
+<img src="https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-api-md-links.png" width="100%" height="100%">
+</p>
 
 ### **CLI**
 <p align="center">
-<img src="https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-cli-md-links.png" width="70%" height="70%">
+<img src="https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-cli-md-links.png" width="80%" height="80%">
 </p>
 
 
