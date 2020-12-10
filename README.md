@@ -20,12 +20,14 @@
 ![flow-chart-api-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-api-md-links.png)
 
 ### **CLI**
-![flow-chart-cli-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-cli-md-links.png)
+<p align="center">
+<img src="https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/flow-chart-cli-md-links.png" width="70%" height="70%">
+</p>
 
 
 ## 3. Implementation Board
 
-![MD-Links-Implementation-Board](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/projects/1)
+[MD-Links Implementation Board](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/projects/1)
 
 
 ## 4. Installation
@@ -53,7 +55,7 @@ This module can be imported into other Node.js scripts and provides the followin
 #### Arguments:
 
 * **`path`**: relative or absolute path string to points to a directory or file
-* **`options`**: an object `{ validate: true}`
+* **`options`**: an object `{ validate: true}` to validate links
 
 #### Return value:
 
@@ -97,19 +99,7 @@ mdLinks("./some/dir")
 
 </center>
 
-
-
-<center>
-
-### `mdLinks(path, options)`
-</center>
-
-
-### CLI (Command Line Interface)
-
 The executable runs as follows through the terminal:
-
-#### `md-links <path-to-file> [options]`
 
 Example:
 
@@ -136,14 +126,9 @@ The options are:
 
 If you pass the `--validate` option, the module will make an HTTP request to find out if the link works or not. If the link results in a redirect to a URL that responds ok, then the link is considered ok.
 
-Example:
+![validate-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/validate-d-md-links.png)
 
-```sh
-$ md-links ./some/example.md --validate
-./some/example.md http://something.com/2/3/ ok 200 Link a algo
-./some/example.md https://another-thing.net/algun-doc.html fail 404 algún doc
-./some/example.md http://google.com/ ok 301 Google
-```
+
 
 We see that the _output_ in this case includes the word `ok` or` fail` after the URL, as well as the status of the response received to the HTTP request to said
 URL.
@@ -153,20 +138,12 @@ URL.
 
 If you pass the option `--stats` the output will be a text with basic statistics about the links.
 
-```sh
-$ md-links ./some/example.md --stats
-Total: 3
-Unique: 3
-```
+![stats-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/stats-d-md-links.png)
 
+#### `--validate --stats`
 You can also combine `--stats` and` --validate` to get needed statistics from the validation results.
 
-```sh
-$ md-links ./some/example.md --stats --validate
-Total: 3
-Unique: 3
-Broken: 1
-```
+![validate-stats-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/validate-stats-d-md-links.png)
 
 
 
