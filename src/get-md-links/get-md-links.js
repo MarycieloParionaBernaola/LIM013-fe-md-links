@@ -1,7 +1,7 @@
 const marked = require('marked');
 // Use Marked package to convert Markdown file into HTML
 const fs = require('fs');
-const { getMdFiles } = require('./get-md-files');
+const { getAllMdFiles } = require('./get-md-files');
 
 // READ FILE
 const readFile = (pathStr) => fs.readFileSync(pathStr, 'utf-8').trim();
@@ -10,7 +10,7 @@ const readFile = (pathStr) => fs.readFileSync(pathStr, 'utf-8').trim();
 // The encoding default value is null which returns raw buffer
 // Use the universal standard utf-8 encoding system to specify that strings be returned
 
-// GET MD LINKS
+// GET MD LINKS FROM A FILE
 const getMdLinksArr = (mdPath) => {
   const mdLinksArr = [];
   const renderer = new marked.Renderer();
@@ -33,10 +33,11 @@ const getMdLinksArr = (mdPath) => {
   return mdLinksArr;
 };
 
+// GET MD LINKS FROM A FILE OR DIRECTORY
 const getAllMdLinksArr = (pathStr) => {
   let allMdLinksArr = [];
   // eslint-disable-next-line no-shadow
-  getMdFiles(pathStr).forEach((pathStr) => {
+  getAllMdFiles(pathStr).forEach((pathStr) => {
     allMdLinksArr = allMdLinksArr.concat(getMdLinksArr(pathStr));
   });
   return allMdLinksArr;

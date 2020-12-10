@@ -27,32 +27,28 @@ const isMd = (pathStr) => path.parse(pathStr).ext === '.md';
 // Trailing directory separators are ignored
 // A TypeError is thrown if path is not a string.
 
-// GET MD FILES
-const getMdFiles = (pathStr) => {
+// GET ALL MD FILES - RECURSION
+const getAllMdFiles = (pathStr) => {
   let mdFilesArr = [];
   if (isDirectory(pathStr)) {
     readDirectory(pathStr).forEach((file) => {
-      // readDirectory output is a file/directory array
+      // readDirectory output are files/directories names array
       // Iterate with each file/directory
-      /* console.log(pathStr);
-      console.log(file); */
-      mdFilesArr = mdFilesArr.concat(getMdFiles(path.join(pathStr, file)));
-      // Use path.join() to join given path to file/directory
-      // This method joins all given path segments together
-      // Using the platform-specific separator as a delimiter
-      // Then normalizes the resulting path
-      // Recursion (apply function and concat)
+      mdFilesArr = mdFilesArr.concat(getAllMdFiles(path.join(pathStr, file)));
+      // Use path.join() to join given path to file/directory name
+      // This method joins all given path segments together and normalizes the resulting path
+      // Recursion (run function again) and then concat md files arr
     });
   } else if (isFile(pathStr) && isMd(pathStr)) {
     mdFilesArr.push(pathStr);
   }
   return mdFilesArr;
 };
-/* console.log(getMdFiles('E:\\BOOTCAMP\\PROJECTS\\MD-LINKS\\LIM013-fe-md-links\\test-files')); */
+
 module.exports = {
   isDirectory,
   readDirectory,
   isFile,
   isMd,
-  getMdFiles,
+  getAllMdFiles,
 };
