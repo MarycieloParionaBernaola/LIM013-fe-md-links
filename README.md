@@ -12,81 +12,61 @@
 
 ## 1. About The Project
 
-![cli-md-links-direct](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/blob/master/img/cli-md-links-direct.png)
-
-![cli-md-links-inquirer](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/blob/master/img/cli-md-links-inquirer.png)
-
-### JavaScript API:
-
-<center>
-
-### `mdLinks(path, options)`
-
-</center>
-
-It extracts and validate all markdown links contained in a directory or file, with their properties: `path`, `href` and `text` and if the object `{ validate: true }` is entered as an argument in `options`, it returns the above plus the `status` and if those are valid it shows `ok` and `fail` for those that are broken.
-
-
-### CLI:
-
-<center>
-
-### `md-links <path-to-file> [options]`
-
-</center>
-
-Validate all markdown links contained in a directory or file and show their statistics with the following options:
-
-* #### --validate
-Check the status of the links.
-
-* #### --stats
-Shows statistics of the total links and how many are unique.
-
-* #### --validate --stats
-Shows statistics for total, unique and broken links.
-
-![md-links-cli]()
+***Markdown-Links-Validator*** provides a ***Javascript API*** that parses, lists and validates the Markdown links contained in a directory or file, it also provides a ***Command Line*** that, in addition to the above, displays its statistics.
 
 ## 2. Flowchart
-![flowchart-md-links](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/blob/master/img/flow-chart-md-links-1.png)
+
+### **API**
+![flowchart-api-md-links](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/blob/master/img/flowchart-api-md-links.png)
+
+### **CLI**
+![flowchart-cli-md-links](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/blob/master/img/flowchart-cli-md-links.png)
 
 
 ## 3. Implementation Board
 
-![implementation-board](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/projects/1)
+![MD-Links-Implementation-Board](https://github.com/MarycieloParionaBernaola/LIM013-fe-md-links/projects/1)
 
 
-## 4. Install
+## 4. Installation
 
+
+
+<center>
+
+### `MarycieloParionaBernaola/@md-links-validator`
+
+</center>
 
 
 ## 5. Usage
 
-### JavaScript API
+* ### JavaScript API:
 
-This module can be imported into other Node.js scripts and offers the following interface:
+This module can be imported into other Node.js scripts and provides the following interface:
 
-#### `mdLinks(path, options)`
+<center>
 
-##### Arguments
+### `mdLinks(path, options)`
+</center>
 
-* `path`: relative or absolute path string
-* `options`: an object with the following properties:
-  - `validate`: boolean that determines if you want to validate found links.
+#### Arguments:
 
-##### Return value
+* **`path`**: relative or absolute path string to points to a directory or file
+* **`options`**: an object `{ validate: true}`
 
-The function returns a promise (`Promise`) that resolves to an array (`Array`) of objects (`Object`), where each object represents a link and contains the following properties:
+#### Return value:
 
-* `href`: URL found.
-* `text`: text that appeared within the link (`<a>`).
-* `path`: path of the file where the link was found.
+It returns an `array` of `objects`, where each object contains properties of a link.
 
-#### Example
+* *`href`*: URL found.
+* *`text`*: text that appeared within the link `<a>`.
+* *`path`*: path of the file where the link was found.
+
+#### Example:
 
 ```js
-const mdLinks = require("md-links");
+const mdLinks = require("md-links-validator");
 
 mdLinks("./some/example.md")
   .then(links => {
@@ -107,6 +87,24 @@ mdLinks("./some/dir")
   .catch(console.error);
 ```
 
+
+
+* ### Command Line:
+
+<center>
+
+### `md-links <path-to-file> [options]`
+
+</center>
+
+
+
+<center>
+
+### `mdLinks(path, options)`
+</center>
+
+
 ### CLI (Command Line Interface)
 
 The executable runs as follows through the terminal:
@@ -124,6 +122,15 @@ $ md-links ./some/example.md
 
 
 #### Options
+
+
+The options are:
+
+**--validate**: check status links.
+
+**--stats**: display statistics of total and unique links.
+
+**--validate --stats**: display statistics of total, unique and broken links
 
 ##### `--validate`
 
