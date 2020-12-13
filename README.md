@@ -34,8 +34,6 @@
 
 ## 4. Installation
 
-
-
 <center>
 
 ### `MarycieloParionaBernaola/@md-links-validator`
@@ -47,8 +45,6 @@
 
 * ### JavaScript API:
 
-This module can be imported into other Node.js scripts and provides the following interface:
-
 <center>
 
 ### `mdLinks(path, options)`
@@ -56,8 +52,8 @@ This module can be imported into other Node.js scripts and provides the followin
 
 #### Arguments:
 
-* **`path`**: relative or absolute path string to points to a directory or file
-* **`options`**: an object `{ validate: true}` to validate links
+* **`path`**: relative or absolute path string to points to a directory or file.
+* **`options`**: an object `{ validate: true}` to validate links.
 
 #### Return value:
 
@@ -91,27 +87,45 @@ mdLinks("./some/dir")
   .catch(console.error);
 ```
 
-
-
 * ### Command Line:
 
+The command line is run in two ways through the terminal:
+
+To get started, run the following command line:
+
+<center>
+
+### `md-links`
+
+</center>
+
+![start-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/start-md-links.png)
+
+
+### With guide:
+
+If you select this option, the first step will be to enter a valid path (it must exist and be a string) that points to your file or directory containing markdown files, otherwise these errors will appear.
+
+![enter-path-erros-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/enter-path-errors-md-links.png)
+
+Then wil be appear the following options:
+
+![options-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/options-md-links.png)
+
+Select one of those and the result will appear
+
+![options-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/list-i-md-links.png)
+
+You can select another option after that and repeat the process.
+
+### Direct way (on your own):
+
+If you want to do it on this way, you can start all the process with the next command line and structure.
 <center>
 
 ### `md-links <path-to-file> [options]`
 
 </center>
-
-The executable runs as follows through the terminal:
-
-Example:
-
-```sh
-$ md-links ./some/example.md
-./some/example.md http://something.com/2/3/ Link a algo
-./some/example.md https://another-thing.net/algun-doc.html algún doc
-./some/example.md http://google.com/ Google
-```
-
 
 #### Options
 
@@ -120,29 +134,18 @@ The options are:
 
 **--validate**: check status links.
 
-**--stats**: display statistics of total and unique links.
-
-**--validate --stats**: display statistics of total, unique and broken links
-
-##### `--validate`
-
-If you pass the `--validate` option, the module will make an HTTP request to find out if the link works or not. If the link results in a redirect to a URL that responds ok, then the link is considered ok.
+If you pass the `--validate` option, the module will make an HTTP request to find out if the link works or not. If the link results in a redirect to a URL that responds "OK", then the link is considered "OK", otherwise the respective status will appear in red and if the request was rejected it will appear "FAIL".
 
 ![validate-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/validate-d-md-links.png)
 
-
-
-We see that the _output_ in this case includes the word `ok` or` fail` after the URL, as well as the status of the response received to the HTTP request to said
-URL.
-
-
-##### `--stats`
+**--stats**: display statistics of total and unique links.
 
 If you pass the option `--stats` the output will be a text with basic statistics about the links.
 
 ![stats-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/stats-d-md-links.png)
 
-#### `--validate --stats`
+**--validate --stats**: display statistics of total, unique and broken links
+
 You can also combine `--stats` and` --validate` to get needed statistics from the validation results.
 
 ![validate-stats-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/validate-stats-d-md-links.png)
