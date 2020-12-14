@@ -108,11 +108,11 @@ If you select this option, the first step will be to enter a valid path (it must
 
 ![enter-path-erros-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/enter-path-errors-md-links.png)
 
-Then wil be appear the following options:
+If you entered a valid path, the following options will appear:
 
 ![options-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/options-md-links.png)
 
-Select one of those and the result will appear
+Select one of those and then the result will be displayed:
 
 ![options-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/list-i-md-links.png)
 
@@ -134,13 +134,13 @@ The options are:
 
 **--validate**: check status links.
 
-If you pass the `--validate` option, the module will make an HTTP request to find out if the link works or not. If the link results in a redirect to a URL that responds "OK", then the link is considered "OK", otherwise the respective status will appear in red and if the request was rejected it will appear "FAIL".
+If you pass `--validate` or `--v` option, the module will make an HTTP request to find out if the link works or not. If the link results in a redirect to a URL that responds "OK", then the link is considered "OK", otherwise the respective status will appear in red and if the request was rejected it will appear "FAIL".
 
 ![validate-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/validate-d-md-links.png)
 
 **--stats**: display statistics of total and unique links.
 
-If you pass the option `--stats` the output will be a text with basic statistics about the links.
+If you pass the option `--stats` or `--s` the output will be a text with basic statistics about the links.
 
 ![stats-d-md-links](https://github.com/MarycieloParionaBernaola/Markdown-Links-Validator/blob/master/img/stats-d-md-links.png)
 
